@@ -367,38 +367,6 @@ NSString * const NXOAuth2ClientConnectionContextTokenRefresh = @"tokenRefresh";
     authConnection.context = NXOAuth2ClientConnectionContextTokenRequest;
 }
 
-// User Password Flow Only
-- (void)authenticateWithUsername:(NSString *)username password:(NSString *)password;
-{
-    NSAssert1(!authConnection, @"authConnection already running with: %@", authConnection);
-    
-    NSMutableURLRequest *tokenRequest = [NSMutableURLRequest requestWithURL:tokenURL];
-    [tokenRequest setHTTPMethod:self.tokenRequestHTTPMethod];
-    [authConnection cancel];  // just to be sure
-
-    self.authenticating = YES;
-
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"password", @"grant_type",
-                                       clientId, @"client_id",
-                                       clientSecret, @"client_secret",
-                                       username, @"username",
-                                       password, @"password",
-                                       nil];
-    if (self.desiredScope) {
-        [parameters setObject:[[self.desiredScope allObjects] componentsJoinedByString:@" "] forKey:@"scope"];
-    }
-    
-    if (self.additionalAuthenticationParameters) {
-        [parameters addEntriesFromDictionary:self.additionalAuthenticationParameters];
-    }
-    
-    authConnection = [[NXOAuth2Connection alloc] initWithRequest:tokenRequest
-                                               requestParameters:parameters
-                                                     oauthClient:self
-                                                        delegate:self];
-    authConnection.context = NXOAuth2ClientConnectionContextTokenRequest;
-}
 
 // Assertion
 - (void)authenticateWithAssertionType:(NSURL *)anAssertionType assertion:(NSString *)anAssertion;

@@ -195,12 +195,6 @@ NSString * const kNXOAuth2AccountStoreAccountType = @"kNXOAuth2AccountStoreAccou
     aPreparedAuthorizationURLHandler(preparedURL);
 }
 
-- (void)requestAccessToAccountWithType:(NSString *)accountType username:(NSString *)username password:(NSString *)password;
-{
-    NXOAuth2Client *client = [self pendingOAuthClientForAccountType:accountType];
-    [client authenticateWithUsername:username password:password];
-}
-
 - (void)requestAccessToAccountWithType:(NSString *)accountType assertionType:(NSURL *)assertionType assertion:(NSString *)assertion;
 {
     NXOAuth2Client *client = [self pendingOAuthClientForAccountType:accountType];
@@ -349,6 +343,8 @@ NSString * const kNXOAuth2AccountStoreAccountType = @"kNXOAuth2AccountStoreAccou
         accountTypes = [self.configurations keysOfEntriesPassingTest:^(id key, id obj, BOOL *stop) {
             NSDictionary *configuration = obj;
             NSURL *redirectURL = [configuration objectForKey:kNXOAuth2AccountStoreConfigurationRedirectURL];
+            if(!redirectURL) return NO;
+            
             if ( [[[aURL absoluteString] lowercaseString] hasPrefix:[[redirectURL absoluteString] lowercaseString]]) {
 
                 // WORKAROUND: The URL which is passed to this method may be lower case also the scheme is registered in camel case. Therefor replace the prefix with the stored redirectURL.

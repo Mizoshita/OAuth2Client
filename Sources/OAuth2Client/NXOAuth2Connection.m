@@ -429,6 +429,9 @@ sendingProgressHandler:(NXOAuth2ConnectionSendingProgressHandler)aSendingProgres
     if (savesData) {
         [data appendData:someData];
     }
+//    NSString* d = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@", d);
+    
     if ([delegate respondsToSelector:@selector(oauthConnection:didReceiveData:)]) {
         [delegate oauthConnection:self didReceiveData:someData];
     }
