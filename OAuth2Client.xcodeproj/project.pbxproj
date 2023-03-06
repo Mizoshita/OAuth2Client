@@ -456,7 +456,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = OAuth2Client;
 				SDKROOT = iphoneos;
@@ -476,7 +476,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = OAuth2Client;
 				SDKROOT = iphoneos;
@@ -529,6 +529,7 @@
 				INFOPLIST_FILE = "OAuth2Client.framework-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNX_BLOCKS_AVAILABLE=1";
 				OTHER_LDFLAGS = (
@@ -559,6 +560,7 @@
 				INFOPLIST_FILE = "OAuth2Client.framework-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/$(EXECUTABLE_PATH)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DNX_BLOCKS_AVAILABLE=1",
